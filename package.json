@@ -3,11 +3,11 @@
   "version": "1.0.0",
   "description": "stackover flow lite clone",
   "main": "server.js",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "babel src/server.js -d resources",
-    "start": "npm run build && node resources/server.js",
-    "dev": "npm run build && nodemon resources/server.js",
+    "start": "node -exec babel-node src/index.js.js",
+    "dev": "nodemon --exec babel-node src/index.js",
     "lint": "eslint '**/*.js'"
   },
   "repository": {
@@ -26,12 +26,13 @@
   },
   "homepage": "https://github.com/Slam256/stack-lite#readme",
   "dependencies": {
+    "cors": "^2.8.5",
     "express": "^4.18.1",
     "nodemon": "^2.0.19"
   },
   "devDependencies": {
-    "@babel/cli": "^7.18.9",
     "@babel/core": "^7.18.9",
+    "@babel/node": "^7.18.9",
     "@babel/preset-env": "^7.18.9",
     "eslint": "^8.20.0",
     "eslint-config-airbnb-base": "^15.0.0",
