@@ -10,11 +10,17 @@ module.exports = {
     'airbnb-base',
   ],
   parserOptions: {
+    parser: 'babel-eslint',
     ecmaVersion: 'latest',
+    sourceType: 'module',
+    ecmaFeatures: {
+      experimentalObjectRestSpread: true,
+    },
   },
   rules: {
     semi: ['error', 'always'],
     quotes: ['error', 'single'],
     'no-console': 'off',
+    'import/extensions': ['never'],
   },
 };
