@@ -21,6 +21,6 @@ module.exports = {
     semi: ['error', 'always'],
     quotes: ['error', 'single'],
     'no-console': 'off',
-    'import/extensions': ['never'],
+    'import/extensions': ['off'],
   },
 };
