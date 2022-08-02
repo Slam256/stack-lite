@@ -2,6 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import router from './routes/index.js';
 
+const PORT = process.env.PORT || 4000;
 const app = express();
 
 app.use(cors());
@@ -12,6 +13,10 @@ app.use(router);
 
 app.get('/', (req, res) => {
   res.send('Welcome to home page');
+});
+
+app.listen(PORT, () => {
+  console.log(`Port is running on ${PORT} go and catch it`);
 });
 
 export default app;
