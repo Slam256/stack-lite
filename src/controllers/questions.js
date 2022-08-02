@@ -4,7 +4,7 @@ import { questions } from '../db/db.js';
 class QuestionsController {
   static async getAllQuestions(req, res) {
     try {
-      return res.status(200).json(questions);
+      res.status(200).json(questions);
     } catch (e) {
       console.log(e.message);
     }
@@ -16,7 +16,9 @@ class QuestionsController {
       const { id } = req.params;
       // check if the question exists in the database
       const question = questions.find((qtn) => qtn.id === parseInt(id, 10));
-      if (!question) res.status(404).json({ message: 'Question was not found' });
+      if (!question) {
+        res.status(404).json({ message: 'Question was not found' });
+      }
       res.status(200).json(question);
     } catch (e) {
       console.log(e.message);
