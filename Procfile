@@ -1,1 +1,1 @@
-web: node -exec babel-node src/start.js
+web: node dist/start.js     
