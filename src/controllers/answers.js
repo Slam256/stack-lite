@@ -1,5 +1,5 @@
-import { v4 as uuidv4 } from 'uuid';
-import { answers, questions } from '../db/db.js';
+import { v4 as uuidv4 } from "uuid";
+import { answers, questions } from "../db/db.js";
 
 class AnswersController {
   static async addAnAnswer(req, res) {
@@ -12,7 +12,7 @@ class AnswersController {
       const qtn = questions.find(({ id }) => qtnId === id);
       // logic
       if (!qtn) {
-        res.status(404).json({ message: 'Question not found' });
+        res.status(404).json({ message: "Question not found" });
       } else {
         const answer = {
           id: uuidv4(),
@@ -20,7 +20,9 @@ class AnswersController {
           ans,
         };
         answers.push(answer);
+
         res.status(201).json({ message: 'Answer added' });
+
       }
     } catch (e) {
       console.log(e.message);
@@ -44,7 +46,7 @@ class AnswersController {
       const question = questions.find((qtn) => qtn.id === parseInt(id, 10));
       // first we check if the question exists in the db if it doesnt we end there.
       if (!question) {
-        res.status(404).json({ message: 'Question was not found' });
+        res.status(404).json({ message: "Question was not found" });
         // If it exists we chack if the answer exists if it doesnt we return msg.
       } else if (!answer) {
         res
