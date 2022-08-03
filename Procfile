@@ -1,1 +1,1 @@
-web: node dist/index.js     
+web: env-cmd -f .env babel-node src/index.js
