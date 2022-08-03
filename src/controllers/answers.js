@@ -6,6 +6,8 @@ class AnswersController {
     try {
       const { ans } = req.body;
       const qtnId = parseInt(req.params.id, 10); // destructing kept returning undefined id.
+      // const { id } = req.params;
+      // console.log(id, '----->id is here');
       // check if question is there in the qtn db
       const qtn = questions.find(({ id }) => qtnId === id);
       // logic
@@ -18,8 +20,9 @@ class AnswersController {
           ans,
         };
         answers.push(answer);
-        console.log(answer);
-        res.status(201).json({ message: "Answer added" }); // how to redirect to the page with all the answers.
+
+        res.status(201).json({ message: 'Answer added' });
+
       }
     } catch (e) {
       console.log(e.message);
