@@ -9,7 +9,7 @@
     "test:watch": "jest --verbose --watchAll",
     "lint": "eslint '**/*.js'",
     "build": "babel src --out-dir dist",
-    "start": "node dist/start.js"
+    "start": "node dist/index.js"
 
   },
   "repository": {
