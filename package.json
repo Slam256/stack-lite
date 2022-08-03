@@ -4,11 +4,12 @@
   "description": "stackover flow lite clone",
   "main": "server.js",
   "scripts": {
-    "test": "NODE_TLS_REJECT_UNAUTHORIZED=0 jest --reporters default jest-stare --coverage --detectOpenHandles --runInBand --testTimeout=60000",
+    "test:full": "NODE_TLS_REJECT_UNAUTHORIZED=0 jest --reporters default jest-stare --coverage --detectOpenHandles --runInBand --testTimeout=60000",
+    "test":"jest",
     "test:watch": "jest --verbose --watchAll",
     "lint": "eslint '**/*.js'",
-    "build":"babel src --out-dir dist",
-    "start":"node dist/start.js"
+    "build": "babel src --out-dir dist",
+    "start": "node dist/start.js"
   },
   "repository": {
     "type": "git",
@@ -24,11 +25,17 @@
   "bugs": {
     "url": "https://github.com/Slam256/stack-lite/issues"
   },
+  "prettier": {
+    "singleQuote": true
+  },
   "homepage": "https://github.com/Slam256/stack-lite#readme",
   "dependencies": {
     "@babel/cli": "^7.18.10",
+    "colors": "^1.4.0",
     "cors": "^2.8.5",
     "express": "^4.18.1",
+    "mongodb": "^4.8.1",
+    "mongoose": "^6.5.0",
     "nodemon": "^2.0.19",
     "uuid": "^8.3.2"
   },

@@ -6,9 +6,7 @@ module.exports = {
     es6: true,
     node: true,
   },
-  extends: [
-    'airbnb-base',
-  ],
+  extends: ['airbnb-base'],
   parserOptions: {
     parser: 'babel-eslint',
     ecmaVersion: 'latest',
@@ -19,7 +17,7 @@ module.exports = {
   },
   rules: {
     semi: ['error', 'always'],
-    quotes: ['error', 'single'],
+    quotes: ['error', 'single', { avoidEscape: true }],
     'no-console': 'off',
     'import/extensions': ['off'],
   },
