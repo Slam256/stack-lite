@@ -1,5 +1,5 @@
-import { v4 as uuidv4 } from 'uuid';
-import { answers, questions } from '../db/db.js';
+import { v4 as uuidv4 } from "uuid";
+import { answers, questions } from "../db/db.js";
 
 class AnswersController {
   static async addAnAnswer(req, res) {
@@ -10,7 +10,7 @@ class AnswersController {
       const qtn = questions.find(({ id }) => qtnId === id);
       // logic
       if (!qtn) {
-        res.status(404).json({ message: 'Question not found' });
+        res.status(404).json({ message: "Question not found" });
       } else {
         const answer = {
           id: uuidv4(),
@@ -19,7 +19,7 @@ class AnswersController {
         };
         answers.push(answer);
         console.log(answer);
-        res.status(201).json({ message: 'Answer added' }); // how to redirect to the page with all the answers.
+        res.status(201).json({ message: "Answer added" }); // how to redirect to the page with all the answers.
       }
     } catch (e) {
       console.log(e.message);
@@ -28,7 +28,7 @@ class AnswersController {
 
   static async getAllAnswers(req, res) {
     try {
-      return res.status(200).json(answers);
+      res.status(200).json(answers);
     } catch (e) {
       console.log(e.message);
     }
@@ -39,20 +39,16 @@ class AnswersController {
       // get id param from the path
       const { id } = req.params; // This is the qtn id
       // check if the question answer exists in the database
-      const answer = answers.filter(
-        (ans) => ans.qtnId === parseInt(id, 10),
-      );
-      const question = questions.find(
-        (qtn) => qtn.id === parseInt(id, 10),
-      );
+      const answer = answers.filter((ans) => ans.qtnId === parseInt(id, 10));
+      const question = questions.find((qtn) => qtn.id === parseInt(id, 10));
       // first we check if the question exists in the db if it doesnt we end there.
       if (!question) {
-        res.status(404).json({ message: 'Question was not found' });
+        res.status(404).json({ message: "Question was not found" });
         // If it exists we chack if the answer exists if it doesnt we return msg.
       } else if (!answer) {
         res
           .status(404)
-          .json({ message: 'We don\'t have an answer to this question' });
+          .json({ message: "We don't have an answer to this question" });
       } else {
         res.status(200).json(answer);
       }
