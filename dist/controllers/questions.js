@@ -36,20 +36,18 @@ var QuestionsController = /*#__PURE__*/function () {
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
-                _context.prev = 0;
-                return _context.abrupt("return", res.status(200).json(_db.questions));
+                try {
+                  res.status(200).json(_db.questions);
+                } catch (e) {
+                  console.log(e.message);
+                }
 
-              case 4:
-                _context.prev = 4;
-                _context.t0 = _context["catch"](0);
-                console.log(_context.t0.message);
-
-              case 7:
+              case 1:
               case "end":
                 return _context.stop();
             }
           }
-        }, _callee, null, [[0, 4]]);
+        }, _callee);
       }));
 
       function getAllQuestions(_x, _x2) {
@@ -74,9 +72,13 @@ var QuestionsController = /*#__PURE__*/function () {
                   question = _db.questions.find(function (qtn) {
                     return qtn.id === parseInt(id, 10);
                   });
-                  if (!question) res.status(404).json({
-                    message: 'Question was not found'
-                  });
+
+                  if (!question) {
+                    res.status(404).json({
+                      message: 'Question was not found'
+                    });
+                  }
+
                   res.status(200).json(question);
                 } catch (e) {
                   console.log(e.message);
@@ -106,28 +108,31 @@ var QuestionsController = /*#__PURE__*/function () {
           while (1) {
             switch (_context3.prev = _context3.next) {
               case 0:
-                try {
-                  _req$body = req.body, title = _req$body.title, description = _req$body.description;
-                  question = {
-                    id: (0, _uuid.v4)(),
-                    title: title,
-                    description: description
-                  };
+                _context3.prev = 0;
+                _req$body = req.body, title = _req$body.title, description = _req$body.description;
+                question = {
+                  id: (0, _uuid.v4)(),
+                  title: title,
+                  description: description
+                };
 
-                  _db.questions.push(question);
+                _db.questions.push(question);
 
-                  res.status(201).redirect('/api/v1/questions');
-                  console.log('Question added');
-                } catch (e) {
-                  console.log(e.message);
-                }
+                return _context3.abrupt("return", res.status(201).json(question));
 
-              case 1:
+              case 7:
+                _context3.prev = 7;
+                _context3.t0 = _context3["catch"](0);
+                return _context3.abrupt("return", res.status(400).json({
+                  message: _context3.t0
+                }));
+
+              case 10:
               case "end":
                 return _context3.stop();
             }
           }
-        }, _callee3);
+        }, _callee3, null, [[0, 7]]);
       }));
 
       function addAQuestion(_x5, _x6) {

@@ -5,7 +5,8 @@ node_modules
 .env
 
 # testing
-
+jest-stare
+coverage
 
 # misc
 package-lock.json

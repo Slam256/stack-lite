@@ -4,11 +4,12 @@
   "description": "stackover flow lite clone",
   "main": "server.js",
   "scripts": {
-    "test": "NODE_TLS_REJECT_UNAUTHORIZED=0 jest --reporters default jest-stare --coverage --detectOpenHandles --runInBand --testTimeout=60000",
+    "test:full": "NODE_TLS_REJECT_UNAUTHORIZED=0 jest --reporters default jest-stare --coverage --detectOpenHandles --runInBand --testTimeout=60000",
+    "test": "jest",
     "test:watch": "jest --verbose --watchAll",
+    "build":"babel src --out-dir dist",
     "lint": "eslint '**/*.js'",
-    "build": "babel src --out-dir dist",
-    "start": "babel-node src/index.js",
+    "start": "env-cmd -f .env babel-node src/index.js",
     "dev": "env-cmd -f .env nodemon --watch src --exec babel-node src/index.js"
   },
   "repository": {
@@ -25,19 +26,25 @@
   "bugs": {
     "url": "https://github.com/Slam256/stack-lite/issues"
   },
+  "prettier": {
+    "singleQuote": true
+  },
   "homepage": "https://github.com/Slam256/stack-lite#readme",
   "dependencies": {
     "@babel/cli": "^7.18.10",
+    "colors": "^1.4.0",
     "cors": "^2.8.5",
     "env-cmd": "^10.1.0",
     "express": "^4.18.1",
+    "mongodb": "^4.8.1",
+    "mongoose": "^6.5.0",
     "nodemon": "^2.0.19",
-    "uuid": "^8.3.2"
-  },
-  "devDependencies": {
+    "uuid": "^8.3.2",
     "@babel/core": "^7.18.10",
     "@babel/node": "^7.18.9",
-    "@babel/preset-env": "^7.18.10",
+    "@babel/preset-env": "^7.18.10"
+  },
+  "devDependencies": {
     "eslint": "^8.20.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-plugin-import": "^2.26.0",
