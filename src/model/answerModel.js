@@ -1,7 +1,4 @@
 /* eslint-disable comma-dangle */
-// id: '840fc7c2-2cd0-415a-8a82-ba74d5188941',
-//     qtnId: 1,
-//     ans: 'This is answer to qtn1',
 
 import mongoose from 'mongoose';
 

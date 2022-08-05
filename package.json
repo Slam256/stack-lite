@@ -7,7 +7,7 @@
     "test:full": "NODE_TLS_REJECT_UNAUTHORIZED=0 jest --reporters default jest-stare --coverage --detectOpenHandles --runInBand --testTimeout=60000",
     "test": "jest",
     "test:watch": "jest --verbose --watchAll",
-    "build":"babel src --out-dir dist",
+    "build": "babel src --out-dir dist",
     "lint": "eslint '**/*.js'",
     "start": "env-cmd -f .env babel-node src/index.js",
     "dev": "env-cmd -f .env nodemon --watch src --exec babel-node src/index.js"
@@ -32,6 +32,10 @@
   "homepage": "https://github.com/Slam256/stack-lite#readme",
   "dependencies": {
     "@babel/cli": "^7.18.10",
+    "@babel/core": "^7.18.10",
+    "@babel/node": "^7.18.9",
+    "@babel/preset-env": "^7.18.10",
+    "bcrypt": "^5.0.1",
     "colors": "^1.4.0",
     "cors": "^2.8.5",
     "env-cmd": "^10.1.0",
@@ -39,10 +43,7 @@
     "mongodb": "^4.8.1",
     "mongoose": "^6.5.0",
     "nodemon": "^2.0.19",
-    "uuid": "^8.3.2",
-    "@babel/core": "^7.18.10",
-    "@babel/node": "^7.18.9",
-    "@babel/preset-env": "^7.18.10"
+    "uuid": "^8.3.2"
   },
   "devDependencies": {
     "eslint": "^8.20.0",
