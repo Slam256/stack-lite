@@ -7,6 +7,7 @@
     "test:full": "NODE_TLS_REJECT_UNAUTHORIZED=0 jest --reporters default jest-stare --coverage --detectOpenHandles --runInBand --testTimeout=60000",
     "test": "jest",
     "test:watch": "jest --verbose --watchAll",
+    "build":"babel src --out-dir dist",
     "lint": "eslint '**/*.js'",
     "start": "env-cmd -f .env babel-node src/index.js",
     "dev": "env-cmd -f .env nodemon --watch src --exec babel-node src/index.js"
