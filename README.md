@@ -5,7 +5,7 @@ Generated with the help of postman.
 
 # Stack-lite
 
-This is a stack-lie. If the name doesn't give it away. It is a stackoverflow very simple clone.
+This is a stack-lite. If the name doesn't give it away. It is a stackoverflow very simple clone.
 
 ## Quick set up
 
