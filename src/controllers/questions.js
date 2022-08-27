@@ -1,10 +1,12 @@
 import { v4 as uuidv4 } from 'uuid';
 import { questions } from '../db/db.js';
+import Question from '../model/questionModel';
 
 class QuestionsController {
   static async getAllQuestions(req, res) {
     try {
-      res.status(200).json(questions);
+      const qtns = await Question.find();
+      res.status(200).json(qtns);
     } catch (e) {
       console.log(e.message);
     }
@@ -15,11 +17,12 @@ class QuestionsController {
       // get id param from the path
       const { id } = req.params;
       // check if the question exists in the database
-      const question = questions.find((qtn) => qtn.id === parseInt(id, 10));
-      if (!question) {
-        res.status(404).json({ message: 'Question was not found' });
+      const qtn = await Question.findById(id).exec();
+      if (qtn === null) {
+        res.status(404).json({ message: 'Question not found' });
+      } else {
+        res.status(200).json(qtn);
       }
-      res.status(200).json(question);
     } catch (e) {
       console.log(e.message);
     }
@@ -28,15 +31,32 @@ class QuestionsController {
   static async addAQuestion(req, res) {
     try {
       const { title, description } = req.body;
-      const question = {
-        id: uuidv4(),
+      req.body.user = req.user.id;
+      const qtn = {
         title,
         description,
       };
-      questions.push(question);
-      return res.status(201).json(question);
+      await Question.create(req.body);
+      return res.status(201).json(qtn);
     } catch (e) {
       return res.status(400).json({ message: e });
+    }
+  }
+
+  static async deleteAQuestion(req, res) {
+    try {
+      // get id param from the path
+      const { id } = req.params;
+      // check if the question exists in the database
+      const question = await Question.find({ _id: id });
+      if (!question) {
+        res.status(404).json({ message: 'Question was not found' });
+      } else {
+        await Question.remove(question);
+        res.status(200).json({ message: `Question ${id} has been deleted` });
+      }
+    } catch (e) {
+      console.log(e.message);
     }
   }
 }

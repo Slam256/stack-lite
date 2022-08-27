@@ -1,6 +1,8 @@
 import { Router } from 'express';
 import QuestionsController from '../../controllers/questions.js';
 
+// const { ensureAuth } = require('../../middleware/auth');
+
 const router = Router();
 
 router.get('/', QuestionsController.getAllQuestions);

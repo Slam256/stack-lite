@@ -1,25 +1,29 @@
-/* eslint-disable comma-dangle */
-import mongoose from 'mongoose';
+const mongoose = require('mongoose');
 
-const { Schema } = mongoose;
-
-const userSchema = new Schema(
-  {
-    name: {
-      type: String,
-      required: [true, 'Please add name'],
-    },
-    email: {
-      type: String,
-      required: [true, 'Please add a valid email'],
-      unique: true,
-    },
-    password: {
-      type: String,
-      required: [true, 'Please create a safe password'],
-    },
+const UserSchema = new mongoose.Schema({
+  googleId: {
+    type: String,
+    required: true,
   },
-  { timestamps: true }
-);
+  displayName: {
+    type: String,
+    required: true,
+  },
+  firstName: {
+    type: String,
+    required: true,
+  },
+  lastName: {
+    type: String,
+    required: true,
+  },
+  image: {
+    type: String,
+  },
+  createdAt: {
+    type: Date,
+    default: Date.now,
+  },
+});
 
-export default mongoose.model('User', userSchema);
+export default mongoose.model('User', UserSchema);
